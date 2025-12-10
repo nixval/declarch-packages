@@ -1,0 +1,17 @@
+packages {
+    rustup
+    base-devel
+    git
+    github-cli
+    
+    // Editors
+    neovim
+    
+    // Modern Unix Tools
+    ripgrep
+    fd
+    eza
+    bat
+    jq
+    tokei
+}

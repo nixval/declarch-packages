@@ -1,0 +1,5 @@
+packages {
+    flatpak:com.valvesoftware.Steam
+    flatpak:net.lutris.Lutris
+    flatpak:com.discordapp.Discord
+}

@@ -1,0 +1,5 @@
+// Universal / Flatpak packages for Hyprland setup
+packages {
+    flatpak:org.mozilla.firefox
+    flatpak:com.github.tchx84.Flatseal
+}
