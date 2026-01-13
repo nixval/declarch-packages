@@ -1,0 +1,91 @@
+// Hyprland Window Manager - Full Setup
+// Works on: Arch Linux (AUR + Soar + Flatpak), Other distros (Soar + Flatpak)
+//
+// Usage:
+//   declarch init hyprland
+//
+// This will install:
+// - AUR packages (Arch only): hyprland, waybar, rofi-wayland, etc.
+// - Soar packages (all distros): bat, exa, fd, ripgrep, etc.
+// - Flatpak packages (all distros): Firefox, Spotify, etc.
+
+// ============================================================================
+// AUR Packages (Arch Linux Only)
+// ============================================================================
+aur-packages {
+    // Core Hyprland
+    hyprland
+    hyprlock
+    hypridle
+    xdg-desktop-portal-hyprland
+
+    // Essential Tools
+    waybar
+    rofi-wayland
+    dunst
+    kitty
+    thunar
+    thunar-archive-plugin
+
+    // Theming & Appearance
+    nwg-look
+    qt5-wayland
+    qt6-wayland
+    polkit-kde-agent
+
+    // Screenshots & Recording
+    grim
+    slurp
+    swappy
+    wf-recorder
+    wl-clipboard
+
+    // Wallpapers & Effects
+    swww
+    waypaper
+}
+
+// ============================================================================
+// Soar Packages (Cross-Distro)
+// ============================================================================
+packages {
+    // Modern Replacements
+    bat
+    exa
+    fd
+    ripgrep
+    fzf
+    zoxide
+    delta
+    duf
+    procs
+    gping
+    zellij
+
+    // Development Tools
+    git-delta
+    lazygit
+    gh
+    nodejs-lts
+    python3
+    rust-analyzer
+}
+
+// ============================================================================
+// Flatpak Packages (Cross-Distro)
+// ============================================================================
+flatpak-packages {
+    // Browsers
+    org.mozilla.firefox
+    com.google.Chrome
+
+    // Communication
+    com.spotify.Client
+    org.telegram.desktop
+    com.discordapp.Discord
+
+    // Utilities
+    com.github.tchx84.Flatseal
+    org.gnome.Clock
+    org.gnome.Calculator
+}

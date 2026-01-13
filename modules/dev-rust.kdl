@@ -1,0 +1,86 @@
+// Rust Development Environment
+// Works on: Arch Linux (AUR + Soar + Flatpak), Other distros (Soar + Flatpak)
+//
+// Usage:
+//   declarch init dev-rust
+//
+// This will install:
+// - Rust toolchain (via rustup)
+// - Development tools and IDEs
+// - Database and caching tools
+
+// ============================================================================
+// AUR Packages (Arch Linux Only)
+// ============================================================================
+aur-packages {
+    // Rust Toolchain via AUR (alternative to rustup)
+    rustup
+    rust-analyzer
+
+    // Development Tools
+    cargo-binstall
+    cargo-watch
+    cargo-edit
+    cargo-audit
+    cargo-outdated
+    cargo-nextest
+    sqlx-cli
+
+    // System Monitoring
+    tokei
+    hyperfine
+    bandwhich
+    procs
+
+    // LSP Formatters
+    taplo-cli  # TOML formatter
+    stylua     # Lua formatter
+}
+
+// ============================================================================
+// Soar Packages (Cross-Distro)
+// ============================================================================
+packages {
+    // Build Tools
+    gcc
+    cmake
+    make
+    pkg-config
+    ninja
+
+    // Version Control
+    git
+    git-lfs
+    gh        # GitHub CLI
+
+    // Database
+    postgresql
+    redis
+    sqlite
+
+    // Container Tools
+    docker
+    docker-compose
+
+    // Network Tools
+    curl
+    wget
+    netcat
+}
+
+// ============================================================================
+// Flatpak Packages (Cross-Distro)
+// ============================================================================
+flatpak-packages {
+    // IDE & Editors
+    org.rustide.RustRover
+    com.visualstudio.code
+    org.gnome.Builder
+
+    // Database Tools
+    io.dbeaver.DBeaverCommunity
+
+    // API Tools
+    rest.insomnia.Insomnia
+    com.postman.Postman
+}
