@@ -1,84 +1,54 @@
-// Gaming Setup - Full Package Collection
-// Works on: Arch Linux (AUR + Soar + Flatpak), Other distros (Soar + Flatpak)
+// Steam Gaming Setup
+// Contributor: @gamer123
+// Category: gaming
+//
+// Complete gaming setup with Steam, Lutris, and various launchers.
+// Includes performance tools like MangoHud and Gamescope.
 //
 // Usage:
-//   declarch init gaming
-//
-// This will install:
-// - Steam, Lutris, Heroic Games Launcher
-// - Game launchers, tools, and utilities
-// - Gaming performance optimizers
+//   declarch init gaming/steam-setup
 
 // ============================================================================
 // AUR Packages (Arch Linux Only)
 // ============================================================================
 aur-packages {
-    // Game Launchers
+    // === Launchers ===
     steam
     heroic-games-launcher-bin
     lutris
     bottles
     prismlauncher
-    moe-launcher
+    minelauncher
 
-    // Tools & Utilities
+    // === Performance Tools ===
     mangohud
     gamescope
     goverlay
     gamemode
+
+    // === Tools ===
     openrazer-daemon
     polychromatic
-
-    // Emulators
-    retroarch
-    dolphin-emu
-    pcsx2
-    yuzu-mainline
-    rpcs3
-
-    // Discord Rich Presence
-    discord-rpc-api
 }
 
 // ============================================================================
 // Soar Packages (Cross-Distro)
 // ============================================================================
 packages {
-    // System Tools
     btop
     htop
+    glances
     iotop
     iftop
-
-    // Network Tools
-    net-tools
-    nmap
-    wireshark
-
-    // Compression
-    p7zip
-    unzip
-    zip
 }
 
 // ============================================================================
 // Flatpak Packages (Cross-Distro)
 // ============================================================================
 flatpak-packages {
-    // Gaming Platforms
     com.valvesoftware.Steam
     com.heroicgameslauncher.hgl
     net.lutris.Lutris
-
-    // Communication
-    com.discordapp.Discord
-    com.skype.Client
-    org.telegram.desktop
-
-    // Game Stores
     com.usebottles.bottles
-
-    // Utilities
-    com.mattjakeman.ExtensionManager
-    io.github.flattool.Warehouse
+    com.discordapp.Discord
 }

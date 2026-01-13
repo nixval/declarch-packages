@@ -8,10 +8,8 @@ Community-maintained package configurations for [declarch](https://github.com/ni
 # Install declarch (if you haven't)
 curl -fsSL https://raw.githubusercontent.com/user/declarch/main/install.sh | sh
 
-# Initialize with a module from this registry
-declarch init hyprland      # Hyprland window manager setup
-declarch init gaming        # Gaming setup
-declarch init dev-rust      # Rust development setup
+# Import a module from this registry
+declarch init hyprland/niri-nico
 
 # Sync your system
 declarch sync
@@ -19,15 +17,20 @@ declarch sync
 
 ## 📁 Structure
 
-Modules are organized as **flat files** for simplicity:
+Modules are organized by **category/contributor** to allow multiple configurations per topic:
 
 ```
 modules/
-├── hyprland.kdl          ← Full Hyprland setup
-├── gaming.kdl            ← Gaming setup
-├── dev-rust.kdl          ← Rust development setup
-├── waybar.kdl            ← Waybar configuration
-└── ...
+├── hyprland/                    ← Hyprland WM category
+│   ├── niri-nico.kdl           ← @niri-nico's setup
+│   ├── minimal-setup.kdl       ← @minimalist's setup
+│   └── another-contrib.kdl     ← Other contributor's setup
+├── gaming/                      ← Gaming category
+│   ├── steam-setup.kdl         ← @gamer123's setup
+│   └── competitive-setup.kdl   ← Competitive gaming setup
+└── dev/                        ← Development category
+    ├── rust-toolchain.kdl      ← @rustacean's setup
+    └── python-env.kdl          ← Python environment
 ```
 
 Each `.kdl` file contains **cross-distro packages**:
@@ -37,130 +40,155 @@ Each `.kdl` file contains **cross-distro packages**:
 
 ## 🎯 Usage Examples
 
-### Basic Usage
+### Import a Module
 
 ```bash
-# Install Hyprland setup
-declarch init hyprland
+# Import Hyprland setup by @niri-nico
+declarch init hyprland/niri-nico
 
-# This downloads modules/hyprland.kdl and:
-# - Adds it to ~/.config/declarch/modules/hyprland.kdl
+# This downloads modules/hyprland/niri-nico.kdl and:
+# - Auto-creates ~/.config/declarch/ if not exists
+# - Adds it to ~/.config/declarch/modules/hyprland/niri-nico.kdl
 # - Auto-injects import into your declarch.kdl
-# - Ready to sync!
 
+# Sync to install
 declarch sync
 ```
 
 ### Multiple Modules
 
 ```bash
-# Install multiple modules
-declarch init hyprland
-declarch init gaming
-declarch init dev-rust
+# Import multiple configurations
+declarch init hyprland/niri-nico
+declarch init gaming/steam-setup
+declarch init dev/rust-toolchain
 
 # All configs are now imported
 declarch check --verbose  # See what will be installed
 ```
 
-### Module Content
+### Discover Available Modules
 
-Each module file contains all package types:
+```bash
+# Browse the registry
+# https://github.com/nixval/declarch-packages/tree/main/modules
 
-```kdl
-// Example: hyprland.kdl
-
-// AUR packages (Arch Linux only)
-aur-packages {
-    hyprland
-    waybar
-    rofi-wayland
-}
-
-// Soar packages (all distros)
-packages {
-    bat
-    exa
-    ripgrep
-}
-
-// Flatpak packages (all distros)
-flatpak-packages {
-    org.mozilla.firefox
-    com.spotify.Client
-}
+# Or list categories:
+ls modules/
+# hyprland/  gaming/  dev/
 ```
 
 ## 🌍 Cross-Distro Support
 
 ### Arch Linux
 ```bash
-declarch init hyprland
+declarch init hyprland/niri-nico
 declarch sync
 # Installs: AUR packages + Soar packages + Flatpak packages
 ```
 
 ### Debian/Ubuntu
 ```bash
-declarch init hyprland
+declarch init hyprland/niri-nico
 declarch sync
 # Installs: Soar packages + Flatpak packages (AUR skipped)
 ```
 
 ### Fedora
 ```bash
-declarch init hyprland
+declarch init hyprland/niri-nico
 declarch sync
 # Installs: Soar packages + Flatpak packages (AUR skipped)
 ```
 
-## 📝 Available Modules
+## 📝 Module Format
 
-### Window Managers
-- **hyprland** - Hyprland wayland compositor + essential tools
-- **sway** - Sway i3-compatible wayland compositor
+Each module file contains all three package types:
 
-### Development
-- **dev-rust** - Rust development environment
-- **dev-python** - Python development environment
-- **dev-node** - Node.js development environment
+```kdl
+// hyprland/niri-nico.kdl
 
-### Gaming
-- **gaming** - Steam, Lutris, launchers, and tools
+// AUR Packages (Arch Linux only)
+aur-packages {
+    hyprland
+    waybar
+    rofi-wayland
+}
 
-### Terminal Tools
-- **term-tools** - Modern CLI tools (bat, exa, fd, etc.)
+// Soar Packages (all distros)
+packages {
+    bat
+    exa
+    ripgrep
+}
 
-### Desktop Applications
-- **waybar** - Waybar status bar
-- **rofi** - Rofi launcher/dmenu replacement
+// Flatpak Packages (all distros)
+flatpak-packages {
+    org.mozilla.firefox
+    com.spotify.Client
+}
+```
+
+## 📂 Available Categories
+
+### Window Managers (`hyprland/`)
+- **niri-nico.kdl** - Complete Hyprland setup with Waybar, Rofi, theming
+- **minimal-setup.kdl** - Bare-bones Hyprland essentials only
+
+### Gaming (`gaming/`)
+- **steam-setup.kdl** - Steam, Lutris, Heroic, launchers + tools
+- **competitive-setup.kdl** - Optimized for competitive gaming
+
+### Development (`dev/`)
+- **rust-toolchain.kdl** - Complete Rust development environment
+- **python-env.kdl** - Python development with data science tools
 
 ## 🤝 Contributing
 
-Contributions are welcome! Here's how to add a module:
+Contributions are welcome! This is a **community registry** where everyone can share their configurations.
 
-### 1. Create Module File
+### How to Contribute
+
+#### 1. Choose Your Module Path
+
+```
+category/your-name.kdl
+```
+
+- **category**: `hyprland`, `gaming`, `dev`, etc.
+- **your-name**: Your unique identifier (username, nickname, etc.)
+
+Examples:
+- `hyprland/niri-nico.kdl` - Your Hyprland setup
+- `gaming/steam-gamer.kdl` - Your gaming config
+- `dev/rust-dev.kdl` - Your Rust development setup
+
+#### 2. Create Your Module
 
 ```bash
-# Clone this repo
-git clone https://github.com/nixval/declarch-packages
+# Fork and clone this repo
+git clone https://github.com/YOUR_USERNAME/declarch-packages
 cd declarch-packages
 
-# Create your module
-cat > modules/your-module.kdl << 'EOF'
-// Your Module Description
-// Usage: declarch init your-module
+# Create your module file
+cat > modules/hyprland/your-name.kdl << 'EOF'
+// Your Name's Hyprland Setup
+// Contributor: @yourusername
+// Category: hyprland
+//
+// Usage:
+//   declarch init hyprland/your-name
 
 aur-packages {
-    package1
-    package2
+    hyprland
+    waybar
 }
 
 packages {
-    package3
-    package4
+    bat
+    exa
 }
 
 flatpak-packages {
-    com.example.app
+    org.mozilla.firefox
 }

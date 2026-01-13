@@ -1,23 +1,22 @@
-// Rust Development Environment
-// Works on: Arch Linux (AUR + Soar + Flatpak), Other distros (Soar + Flatpak)
+// Rust Development Toolchain
+// Contributor: @rustacean
+// Category: dev
+//
+// Complete Rust development environment with editors, tools, and databases.
+// Ready for Rust backend, frontend, and systems programming.
 //
 // Usage:
-//   declarch init dev-rust
-//
-// This will install:
-// - Rust toolchain (via rustup)
-// - Development tools and IDEs
-// - Database and caching tools
+//   declarch init dev/rust-toolchain
 
 // ============================================================================
 // AUR Packages (Arch Linux Only)
 // ============================================================================
 aur-packages {
-    // Rust Toolchain via AUR (alternative to rustup)
+    // === Rust Toolchain ===
     rustup
     rust-analyzer
 
-    // Development Tools
+    // === Cargo Tools ===
     cargo-binstall
     cargo-watch
     cargo-edit
@@ -26,61 +25,46 @@ aur-packages {
     cargo-nextest
     sqlx-cli
 
-    // System Monitoring
+    // === Analysis Tools ===
     tokei
     hyperfine
     bandwhich
     procs
 
-    // LSP Formatters
-    taplo-cli  # TOML formatter
-    stylua     # Lua formatter
+    // === Formatters ===
+    taplo-cli
+    stylua
 }
 
 // ============================================================================
 // Soar Packages (Cross-Distro)
 // ============================================================================
 packages {
-    // Build Tools
+    // === Build Tools ===
     gcc
     cmake
     make
     pkg-config
     ninja
+    meson
 
-    // Version Control
+    // === Version Control ===
     git
     git-lfs
-    gh        # GitHub CLI
+    gh
 
-    // Database
-    postgresql
-    redis
-    sqlite
-
-    // Container Tools
+    // === Containers ===
     docker
     docker-compose
-
-    // Network Tools
-    curl
-    wget
-    netcat
+    podman
 }
 
 // ============================================================================
 // Flatpak Packages (Cross-Distro)
 // ============================================================================
 flatpak-packages {
-    // IDE & Editors
     org.rustide.RustRover
     com.visualstudio.code
     org.gnome.Builder
-
-    // Database Tools
     io.dbeaver.DBeaverCommunity
-
-    // API Tools
-    rest.insomnia.Insomnia
-    com.postman.Postman
 }

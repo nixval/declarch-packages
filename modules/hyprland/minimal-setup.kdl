@@ -1,0 +1,39 @@
+// Minimal Hyprland Setup
+// Contributor: @minimalist
+// Category: hyprland
+//
+// A bare-bones Hyprland configuration with just the essentials.
+// Perfect for users who want to build their own setup from scratch.
+//
+// Usage:
+//   declarch init hyprland/minimal-setup
+
+// ============================================================================
+// AUR Packages (Arch Linux Only)
+// ============================================================================
+aur-packages {
+    hyprland
+    xdg-desktop-portal-hyprland
+    waybar
+    kitty
+    rofi-wayland
+    dunst
+}
+
+// ============================================================================
+// Soar Packages (Cross-Distro)
+// ============================================================================
+packages {
+    bat
+    exa
+    fd
+    ripgrep
+    fzf
+}
+
+// ============================================================================
+// Flatpak Packages (Cross-Distro)
+// ============================================================================
+flatpak-packages {
+    org.mozilla.firefox
+}
