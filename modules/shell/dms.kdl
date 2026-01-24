@@ -1,0 +1,27 @@
+meta {
+  title "Dank linux"
+  Descriptin "DankMaterialShell"
+  author "AvengeMedia"
+  url "https://github.com/AnengeMedia/DankMaterialShell"
+  version "1.2.3"
+}
+
+packages {
+  // // Mandatory
+  quickshell-git
+  dms-shell-bin
+  // // Window Manager //Choose one
+  // niri
+  // hyprland
+
+  // Optional Integrations
+  dgop dsearch-bin
+  matugen i2c-tools
+  wl-clipboard cliphist
+  cava
+  qt6-multimedia
+}
+
+hooks {
+  //
+}

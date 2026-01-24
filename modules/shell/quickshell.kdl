@@ -1,0 +1,11 @@
+packages {
+
+
+  // additional packages
+  // qtsvg // support for SVG image loading
+  // qtimageformats // support for WEBP images as well as some less common ones
+  // qtmultimedia // support for playing videos, audio, etc
+  // qt5compat // extra visual effects
+}
+
+

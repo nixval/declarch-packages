@@ -1,0 +1,25 @@
+meta {
+  description "Noctalia-shell"
+  author "noctalia-dev"
+  tags "quickshell shell"
+  url "https://github.comnoctalia-dev/noctalia-shell"
+  version "4.2.0"
+}
+
+packages {
+  // // REQUIRED
+  noctalia-shell
+  // noctalia-shell-git //development version
+  quickshell-git
+  git python imagemagick
+
+  // // Hardware-specific
+  //  ddcutil
+
+  // Optional
+  brightnessctl
+  cliphist cava wlsunset
+  xdg-desktop-portal
+  python3 evolution-data-server
+  imagemagick
+}

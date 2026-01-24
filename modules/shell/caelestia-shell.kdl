@@ -1,0 +1,22 @@
+meta {
+  description "Caelestia-shell"
+  author "caelestia-dots"
+  tags "quickshell shell"
+  url "https://github.com/caelestia-dots/shell"
+  version "1.4.1"
+}
+
+packages {
+  caelestia-cli
+  quickshell-git
+  ddcutil
+  brightnessctl
+  libcava
+  networkmanager
+  lm-sensors
+  fish
+  aubio
+  libpipewire
+  qt6-declarative qt6-base
+  swappy
+}
