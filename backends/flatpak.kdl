@@ -1,0 +1,36 @@
+// flatpak - Universal app distribution for Linux
+// Next-generation technology for building and distributing desktop applications
+backend "flatpak" {
+    meta {
+        title "Flatpak"
+        description "Next-generation technology for building and distributing desktop applications on Linux. Universal packaging format."
+        version "1.0.0"
+        author "declarch-community"
+        tags "linux" "flatpak" "universal" "sandboxed" "desktop"
+        homepage "https://flatpak.org"
+        license "LGPL-2.1"
+        created "2026-02-02"
+        platforms "linux"
+        requires "flatpak"
+        examples "com.spotify.Client" "org.mozilla.firefox" "com.visualstudio.code"
+    }
+    
+    binary "flatpak"
+    
+    list "flatpak list --app --columns=application,version" {
+        format tsv
+        name_col 0
+        version_col 1
+    }
+    
+    install "flatpak install --user flathub {packages}"
+    remove "flatpak uninstall --user {packages}"
+    
+    noconfirm "-y"
+    
+    search "flatpak search {query}" {
+        format tsv
+        name_col 0
+        desc_col 1
+    }
+}

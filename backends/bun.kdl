@@ -1,0 +1,26 @@
+// bun - Incredibly fast JavaScript runtime, bundler, test runner
+// Fast all-in-one JavaScript toolkit
+backend "bun" {
+    meta {
+        title "Bun JavaScript Toolkit"
+        description "Incredibly fast JavaScript runtime, bundler, transpiler, and package manager. Written in Zig."
+        version "1.0.0"
+        author "declarch-community"
+        tags "nodejs" "javascript" "bun" "fast" "zig" "bundler" "runtime"
+        homepage "https://bun.sh"
+        license "MIT"
+        created "2026-02-02"
+        platforms "linux" "macos"
+        requires "none"
+        examples "typescript" "elysia" "hono" "zod"
+    }
+    
+    binary "bun" "bun.exe"
+    
+    list "bun pm ls -g" {
+        format json
+    }
+    
+    install "bun add -g {packages}"
+    remove "bun remove -g {packages}"
+}

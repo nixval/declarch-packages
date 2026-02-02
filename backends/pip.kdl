@@ -1,0 +1,29 @@
+// pip - Python package installer
+// Standard package manager for Python
+backend "pip" {
+    meta {
+        title "Python Package Installer"
+        description "Standard package manager for Python. Installs and manages Python packages from PyPI."
+        version "1.0.0"
+        author "declarch-community"
+        tags "python" "pip" "pypi" "package-manager"
+        homepage "https://pip.pypa.io"
+        license "MIT"
+        created "2026-02-02"
+        platforms "linux" "macos" "windows"
+        requires "python"
+        examples "requests" "numpy" "pandas" "flask" "django"
+    }
+    
+    binary "pip" "pip3" "pip.exe"
+    
+    list "pip list --format=json" {
+        format json
+    }
+    
+    install "pip install {packages}"
+    remove "pip uninstall -y {packages}"
+    
+    // pip uses -y for non-interactive uninstall
+    noconfirm "-y"
+}

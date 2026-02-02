@@ -1,0 +1,51 @@
+// npm - Node Package Manager
+// Official package manager for Node.js
+backend "npm" {
+    // Metadata for users to understand this backend
+    meta {
+        title "Node Package Manager"
+        description "Official package manager for Node.js. Manage JavaScript packages globally."
+        version "1.0.0"
+        author "declarch-community"
+        tags "nodejs" "javascript" "npm" "package-manager"
+        homepage "https://www.npmjs.com"
+        license "MIT"
+        
+        // When this backend was added to the repository
+        created "2026-02-02"
+        
+        // Supported platforms
+        platforms "linux" "macos" "windows"
+        
+        // Requirements
+        requires "nodejs"
+        
+        // Example packages that work well with this backend
+        examples "typescript" "eslint" "prettier" "http-server"
+    }
+    
+    binary "npm" "npm.exe"
+    
+    list "npm list -g --json --depth=0" {
+        format json
+        json {
+            path "dependencies"
+            name_key "name"
+            version_key "version"
+        }
+    }
+    
+    install "npm install -g {packages}"
+    remove "npm uninstall -g {packages}"
+    
+    search "npm search {query} --json" {
+        format json
+        json {
+            name_key "name"
+            version_key "version"
+            desc_key "description"
+        }
+    }
+    
+    // npm doesn't need noconfirm flag, it doesn't prompt
+}
