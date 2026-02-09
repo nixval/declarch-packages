@@ -2,24 +2,25 @@
 // Static binary package manager with blazing speed
 backend "soar" {
     meta {
-        title "Soar Package Manager"
+        title "Soar"
         description "Fast, modern, open-source package manager for static binaries. Installs pre-compiled static binaries instantly."
-        version "1.0.0"
-        author "declarch-community"
+        version "-"
+        author "-"
+        maintained "nixval"
         tags "linux" "soar" "static" "binary" "fast" "modern"
-        homepage "https://github.com/pkgforge/soar"
-        license "MIT"
-        created "2026-02-02"
+        url "-"
+        homepage "https://soar.dev"
+        license "-"
+        created "2026-02-08"
         platforms "linux"
         requires "none"
-        examples "eza" "bat" "fd" "ripgrep" "fzf"
+        install-guide "curl -fsSL https://install.soar.qa | sh"
     }
     
     binary "soar"
-    auto_install "curl -fsSL https://install.soar.qa | sh"
     
     list "soar list" {
-        format whitespace
+        format "whitespace"
         name_col 0
     }
     
@@ -29,13 +30,11 @@ backend "soar" {
     noconfirm "-y"
     
     search "soar search --json {query}" {
-        format json
+        format "json"
         json {
             name_key "pkg_name"
             version_key "version"
             desc_key "description"
         }
     }
-    
-    strip_ansi true
 }
