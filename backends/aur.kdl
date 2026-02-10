@@ -1,0 +1,31 @@
+// aur - Meta backend for AUR packages
+backend "aur" {
+    meta {
+        title "AUR"
+        description "Meta backend for AUR packages with fallback"
+        maintained "nixval"
+        tags "arch" "linux" "aur" "meta"
+        url "-"
+        homepage "https://aur.archlinux.org"
+        license "-"
+        created "2026-02-08"
+        platforms "linux"
+        requires "pacman"
+        install-guide "-"
+    }
+    
+    fallback "paru" "yay" "pacman"
+    binary "paru" "yay"
+    sudo "true"
+    
+    list "paru -Qq 2>/dev/null || yay -Qq 2>/dev/null || pacman -Qq" {
+        format "whitespace"
+    }
+    
+    install "paru -S --needed {packages} 2>/dev/null || yay -S --needed {packages} 2>/dev/null || pacman -S --needed {packages}"
+    remove "paru -Rsn {packages} 2>/dev/null || yay -Rsn {packages} 2>/dev/null || pacman -Rsn {packages}"
+    update "paru -Syu 2>/dev/null || yay -Syu 2>/dev/null || pacman -Syu"
+    upgrade "paru -Sua 2>/dev/null || yay -Sua 2>/dev/null || echo 'No AUR helper'"
+    
+    noconfirm "--noconfirm"
+}

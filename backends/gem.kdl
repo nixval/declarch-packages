@@ -1,0 +1,35 @@
+// gem - Ruby package manager
+// Package manager for Ruby libraries and applications
+backend "gem" {
+    meta {
+        title "RubyGems"
+        description "Package manager for Ruby libraries and applications. Installs Ruby gems from RubyGems.org."
+        version "-"
+        author "-"
+        maintained "nixval"
+        tags "ruby" "gem" "rubygems" "package-manager"
+        url "-"
+        homepage "https://rubygems.org"
+        license "-"
+        created "2026-02-08"
+        platforms "linux" "macos" "windows"
+        requires "ruby"
+        install-guide "-"
+    }
+    
+    binary "gem"
+    sudo "true"
+    
+    list "gem list --local" {
+        format "regex"
+        pattern "^(\\S+)\\s*\\(([^)]+)\\)"
+        name_group 1
+        version_group 2
+    }
+    
+    install "gem install {packages}"
+    remove "gem uninstall {packages} -x"
+    update "gem update --system && gem update"
+    
+    noconfirm "--force"
+}

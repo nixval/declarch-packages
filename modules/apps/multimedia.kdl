@@ -1,0 +1,18 @@
+// Multimedia
+meta {
+    title "Multimedia"
+    description "Audio and video applications"
+    maintained "nixval"
+    tags "multimedia" "audio" "video"
+}
+
+pkg:aur {
+    pipewire
+    pipewire-pulse
+    wireplumber
+    mpv
+    ffmpeg
+    yt-dlp
+}
+
+on-sync "echo 'Multimedia synced'"

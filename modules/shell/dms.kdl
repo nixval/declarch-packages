@@ -1,27 +1,37 @@
+// DankMaterialShell - DMS
+// A beautiful, customizable, and functional shell for Linux
 meta {
-  title "Dank linux"
-  Descriptin "DankMaterialShell"
-  author "AvengeMedia"
-  url "https://github.com/AnengeMedia/DankMaterialShell"
-  version "1.2.3"
+    title "DankMaterialShell"
+    description "DankMaterialShell - A beautiful, customizable, and functional shell for Linux"
+    author "AvengeMedia"
+    maintained "nixval"
+    url "https://github.com/AnengeMedia/DankMaterialShell"
+    version "1.2.3"
+    tags "shell" "dms" "quickshell" "hyprland" "wayland"
+    homepage "https://github.com/AnengeMedia/DankMaterialShell"
+    license "GPL-3.0"
 }
 
-packages {
-  // // Mandatory
-  quickshell-git
-  dms-shell-bin
-  // // Window Manager //Choose one
-  // niri
-  // hyprland
-
-  // Optional Integrations
-  dgop dsearch-bin
-  matugen i2c-tools
-  wl-clipboard cliphist
-  cava
-  qt6-multimedia
+// AUR Packages for DMS
+pkg:aur {
+    // Mandatory
+    quickshell-git
+    dms-shell-bin
+    
+    // Optional Window Manager (uncomment one)
+    // niri
+    // hyprland
+    
+    // Optional Integrations
+    dgop
+    dsearch-bin
+    matugen
+    i2c-tools
+    wl-clipboard
+    cliphist
+    cava
+    qt6-multimedia
 }
 
-hooks {
-  //
-}
+// Hooks for setup
+on-sync "echo 'DMS packages synced'"

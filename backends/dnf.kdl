@@ -1,0 +1,44 @@
+// dnf - Dandified YUM for Fedora/RHEL
+// Next-generation package manager for RPM-based distributions
+backend "dnf" {
+    meta {
+        title "DNF"
+        description "Dandified YUM - Next-generation package manager for Fedora, RHEL, CentOS, and derivatives."
+        version "-"
+        author "-"
+        maintained "nixval"
+        tags "fedora" "rhel" "centos" "linux" "dnf" "rpm" "package-manager"
+        url "-"
+        homepage "https://dnf.readthedocs.io"
+        license "-"
+        created "2026-02-08"
+        platforms "linux"
+        requires "dnf"
+        install-guide "-"
+    }
+    
+    binary "dnf"
+    sudo "true"
+    
+    list "dnf list installed --quiet | tail -n +2" {
+        format "tsv"
+        name_col 0
+        version_col 1
+    }
+    
+    install "dnf install -y {packages}"
+    remove "dnf remove -y {packages}"
+    update "dnf upgrade -y"
+    autoremove "dnf autoremove -y"
+    
+    noconfirm "-y"
+    
+    search "dnf search {query} --quiet" {
+        format "regex"
+        regex {
+            line "^(.+?)\\s*:\\s*(.+)$"
+            name_group 1
+            desc_group 2
+        }
+    }
+}

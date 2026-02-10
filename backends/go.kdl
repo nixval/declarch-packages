@@ -1,0 +1,29 @@
+// go - Go package installer
+// Install Go tools and binaries using go install
+backend "go" {
+    meta {
+        title "Go Install"
+        description "Install Go tools and binaries directly from source. Uses 'go install' to compile and install packages."
+        version "-"
+        author "-"
+        maintained "nixval"
+        tags "go" "golang" "installer" "source"
+        url "-"
+        homepage "https://go.dev"
+        license "-"
+        created "2026-02-08"
+        platforms "linux" "macos" "windows"
+        requires "go"
+        install-guide "-"
+    }
+    
+    binary "go"
+    sudo "false"
+    
+    list "ls $(go env GOPATH)/bin 2>/dev/null || ls $HOME/go/bin 2>/dev/null" {
+        format "plain"
+    }
+    
+    install "go install {packages}@latest"
+    remove "rm $(go env GOPATH)/bin/{packages} 2>/dev/null || rm $HOME/go/bin/{packages} 2>/dev/null"
+}

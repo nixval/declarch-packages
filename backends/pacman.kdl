@@ -1,0 +1,32 @@
+// pacman - Arch Linux package manager
+// Native package manager for Arch Linux
+backend "pacman" {
+    meta {
+        title "Pacman"
+        description "Native package manager for Arch Linux. Handles official repository packages."
+        version "-"
+        author "-"
+        maintained "nixval"
+        tags "arch" "linux" "pacman" "native" "official"
+        url "-"
+        homepage "https://wiki.archlinux.org/title/Pacman"
+        license "-"
+        created "2026-02-08"
+        platforms "linux"
+        requires "pacman"
+        install-guide "-"
+    }
+    
+    binary "pacman"
+    sudo "true"
+    
+    list "pacman -Qq" {
+        format "plain"
+    }
+    
+    install "pacman -S --needed {packages}"
+    remove "pacman -Rsn {packages}"
+    update "pacman -Syu"
+    
+    noconfirm "--noconfirm"
+}

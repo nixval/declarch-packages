@@ -1,0 +1,20 @@
+// Hyprland - Dynamic tiling Wayland compositor
+meta {
+    title "Hyprland"
+    description "Dynamic tiling Wayland compositor"
+    maintained "nixval"
+    tags "desktop" "wayland" "tiling"
+}
+
+pkg:aur {
+    hyprland
+    hyprpaper
+    hyprlock
+    hypridle
+    waybar
+    wofi
+    mako
+    kitty
+}
+
+on-sync "echo 'Hyprland synced'"

@@ -1,0 +1,23 @@
+// Base System
+meta {
+    title "Base System"
+    description "Essential system packages"
+    maintained "nixval"
+    tags "system" "base" "essential"
+}
+
+pkg:aur {
+    git
+    curl
+    wget
+    eza
+    fd
+    ripgrep
+    fzf
+    bat
+    htop
+    neovim
+    zsh
+}
+
+on-sync "echo 'Base system synced'"

@@ -4,21 +4,24 @@ backend "brew" {
     meta {
         title "Homebrew"
         description "The Missing Package Manager for macOS (or Linux). Installs packages from Homebrew repository."
-        version "1.0.0"
-        author "declarch-community"
+        version "-"
+        author "-"
+        maintained "nixval"
         tags "macos" "linux" "brew" "homebrew" "apple"
+        url "-"
         homepage "https://brew.sh"
-        license "BSD-2-Clause"
-        created "2026-02-02"
+        license "-"
+        created "2026-02-08"
         platforms "macos" "linux"
         requires "none"
-        examples "wget" "curl" "git" "node" "python"
+        install-guide "-"
     }
     
-    binary "brew" "brew.exe"
+    binary "brew"
+    sudo "false"
     
     list "brew list --formulae" {
-        format whitespace
+        format "whitespace"
         name_col 0
     }
     
@@ -26,7 +29,7 @@ backend "brew" {
     remove "brew uninstall {packages}"
     
     search "brew search {query}" {
-        format whitespace
+        format "whitespace"
         name_col 0
     }
 }

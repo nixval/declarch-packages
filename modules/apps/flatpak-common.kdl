@@ -1,0 +1,18 @@
+// Common Flatpak Apps
+meta {
+    title "Flatpak Apps"
+    description "Common GUI applications"
+    maintained "nixval"
+    tags "apps" "gui" "flatpak"
+}
+
+pkg:flatpak {
+    org.mozilla.firefox
+    com.google.Chrome
+    com.visualstudio.code
+    com.discordapp.Discord
+    com.spotify.Client
+    org.videolan.VLC
+}
+
+on-sync "echo 'Flatpak apps synced'"

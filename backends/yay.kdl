@@ -1,0 +1,33 @@
+// yay - Yet Another Yogurt
+// Simple, fast AUR helper written in Go
+backend "yay" {
+    meta {
+        title "Yay"
+        description "Yet Another Yogurt - Simple and fast AUR helper written in Go. Minimal dependencies, easy to use."
+        version "-"
+        author "-"
+        maintained "nixval"
+        tags "arch" "linux" "aur" "helper" "go" "yay"
+        url "-"
+        homepage "https://github.com/Jguer/yay"
+        license "-"
+        created "2026-02-08"
+        platforms "linux"
+        requires "pacman"
+        install-guide "-"
+    }
+    
+    binary "yay"
+    sudo "true"
+    
+    list "yay -Qq" {
+        format "plain"
+    }
+    
+    install "yay -S --needed {packages}"
+    remove "yay -Rsn {packages}"
+    update "yay -Syu"
+    upgrade "yay -Sua"
+    
+    noconfirm "--noconfirm"
+}

@@ -2,23 +2,26 @@
 // Alternative Node.js package manager by Facebook
 backend "yarn" {
     meta {
-        title "Yarn Package Manager"
+        title "Yarn"
         description "Fast, reliable, and secure dependency management for JavaScript. Alternative to npm with better performance."
-        version "1.0.0"
-        author "declarch-community"
+        version "-"
+        author "-"
+        maintained "nixval"
         tags "nodejs" "javascript" "yarn" "facebook" "package-manager" "fast"
+        url "-"
         homepage "https://yarnpkg.com"
-        license "BSD-2-Clause"
-        created "2026-02-02"
+        license "-"
+        created "2026-02-08"
         platforms "linux" "macos" "windows"
         requires "nodejs"
-        examples "typescript" "react" "vue" "next"
+        install-guide "-"
     }
     
-    binary "yarn" "yarn.cmd"
+    binary "yarn"
+    sudo "false"
     
     list "yarn global list --json" {
-        format json
+        format "json"
     }
     
     install "yarn global add {packages}"

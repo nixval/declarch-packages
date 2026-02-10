@@ -1,0 +1,24 @@
+// Rust Development
+meta {
+    title "Rust Dev"
+    description "Rust programming environment"
+    maintained "nixval"
+    tags "dev" "rust" "cargo"
+}
+
+pkg:aur {
+    rust
+    rust-analyzer
+    cargo
+}
+
+pkg:cargo {
+    cargo-watch
+    cargo-update
+    ripgrep
+    fd-find
+    bat
+    eza
+}
+
+on-sync "echo 'Rust dev synced'"

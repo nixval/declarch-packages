@@ -1,0 +1,22 @@
+// Node.js Development Environment
+meta {
+    title "Node.js Dev"
+    description "JavaScript/TypeScript development"
+    maintained "nixval"
+    tags "dev" "nodejs" "javascript"
+}
+
+pkg:aur {
+    nodejs
+    npm
+    pnpm
+}
+
+pkg:npm {
+    typescript
+    eslint
+    prettier
+    "@anthropic-ai/claude-code"
+}
+
+on-sync "echo 'Node.js dev synced'"

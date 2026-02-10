@@ -1,0 +1,73 @@
+// Declarch Backend Registry
+// Import all available backends or uncomment only the ones you need
+
+// ============================================================================
+// SYSTEM PACKAGE MANAGERS
+// ============================================================================
+
+// Arch Linux ecosystem - choose ONE or use 'aur' meta backend
+import "backends/paru.kdl"      // Feature-packed AUR helper (recommended)
+import "backends/yay.kdl"       // Alternative AUR helper
+import "backends/pacman.kdl"    // Native pacman (official repos only)
+import "backends/aur.kdl"       // Meta backend with auto-fallback (paru→yay→pacman)
+
+// Debian/Ubuntu
+// import "backends/apt.kdl"
+
+// Fedora/RHEL/CentOS
+// import "backends/dnf.kdl"
+
+// Universal Linux packages
+import "backends/flatpak.kdl"
+import "backends/soar.kdl"
+// import "backends/snap.kdl"
+// import "backends/nix.kdl"
+
+// macOS
+// import "backends/brew.kdl"
+
+// ============================================================================
+// LANGUAGE-SPECIFIC PACKAGE MANAGERS
+// ============================================================================
+
+// Node.js ecosystem
+import "backends/npm.kdl"
+// import "backends/yarn.kdl"
+// import "backends/pnpm.kdl"
+// import "backends/bun.kdl"
+
+// Python
+import "backends/pip.kdl"
+
+// Rust
+import "backends/cargo.kdl"
+
+// Ruby
+// import "backends/gem.kdl"
+
+// Go
+// import "backends/go.kdl"
+
+// ============================================================================
+// NOTES
+// ============================================================================
+// 
+// To add a backend, simply uncomment the import line above or add:
+// import "backends/your-backend.kdl"
+//
+// For Arch Linux users, 'aur' backend is recommended as it provides
+// automatic fallback: paru → yay → pacman
+//
+// For a minimal setup, you might only need:
+// - aur (or paru/pacman for Arch)
+// - flatpak (for GUI apps)
+// - npm (if you do Node.js development)
+// - cargo (if you do Rust development)
+//
+// Meta Fields in Backend Configs:
+// - maintained: Current maintainer (set to "nixval")
+// - url: Source code URL (set to "-" if unknown, will be hidden)
+// - install-guide: Installation instructions (set to "-" if unknown)
+// - version, author, license: Set to "-" if unknown (will be hidden)
+//
+// All fields with "-" value will not be displayed during 'declarch init'
