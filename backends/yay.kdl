@@ -21,7 +21,8 @@ backend "yay" {
     sudo "true"
     
     list "yay -Qq" {
-        format "plain"
+        format "whitespace"
+        name_col 0
     }
     
     install "yay -S --needed {packages}"
@@ -30,4 +31,10 @@ backend "yay" {
     upgrade "yay -Sua"
     
     noconfirm "--noconfirm"
+    
+    search "yay -Ss {query}" {
+        format "regex"
+        regex "^aur/([^\\s]+)|^community/([^\\s]+)|^extra/([^\\s]+)"
+        name_group 1
+    }
 }

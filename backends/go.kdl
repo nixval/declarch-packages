@@ -21,7 +21,8 @@ backend "go" {
     sudo "false"
     
     list "ls $(go env GOPATH)/bin 2>/dev/null || ls $HOME/go/bin 2>/dev/null" {
-        format "plain"
+        format "whitespace"
+        name_col 0
     }
     
     install "go install {packages}@latest"

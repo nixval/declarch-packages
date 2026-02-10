@@ -22,6 +22,8 @@ backend "pip" {
     
     list "pip list --format=json" {
         format "json"
+        name_key "name"
+        version_key "version"
     }
     
     install "pip install {packages}"

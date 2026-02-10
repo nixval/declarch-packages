@@ -20,10 +20,19 @@ backend "yarn" {
     binary "yarn"
     sudo "false"
     
-    list "yarn global list --json" {
-        format "json"
+    // yarn global list outputs tree format, using regex to extract package names
+    list "yarn global list" {
+        format "regex"
+        regex "^[├└]── ([^@]+)@"
+        name_group 1
     }
     
     install "yarn global add {packages}"
     remove "yarn global remove {packages}"
+    
+    search "yarn search {query}" {
+        format "whitespace"
+        name_col 0
+        desc_col 1
+    }
 }

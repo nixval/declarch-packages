@@ -21,7 +21,8 @@ backend "paru" {
     sudo "true"
     
     list "paru -Qq" {
-        format "plain"
+        format "whitespace"
+        name_col 0
     }
     
     install "paru -S --needed {packages}"
@@ -30,4 +31,10 @@ backend "paru" {
     upgrade "paru -Sua"
     
     noconfirm "--noconfirm"
+    
+    search "paru -Ss {query}" {
+        format "regex"
+        regex "^aur/([^\\s]+)|^community/([^\\s]+)|^extra/([^\\s]+)"
+        name_group 1
+    }
 }
