@@ -1,5 +1,6 @@
 // bun - Incredibly fast JavaScript runtime, bundler, test runner
 // Fast all-in-one JavaScript toolkit
+// Note: bun doesn't have built-in search command
 backend "bun" {
     meta {
         title "Bun"
@@ -20,8 +21,11 @@ backend "bun" {
     binary "bun"
     sudo "false"
     
+    // bun pm ls -g outputs a tree format
     list "bun pm ls -g" {
-        format "json"
+        format "regex"
+        regex "^[├└]── ([^@]+)@"
+        name_group 1
     }
     
     install "bun add -g {packages}"

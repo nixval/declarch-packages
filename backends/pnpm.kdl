@@ -20,10 +20,20 @@ backend "pnpm" {
     binary "pnpm"
     sudo "false"
     
-    list "pnpm list -g --json" {
-        format "json"
+    // pnpm list -g outputs plain text format
+    list "pnpm list -g" {
+        format "regex"
+        regex "^(\\S+)@"
+        name_group 1
     }
     
     install "pnpm add -g {packages}"
     remove "pnpm remove -g {packages}"
+    
+    search "pnpm search {query} --json" {
+        format "npm_json"
+        name_key "name"
+        version_key "version"
+        desc_key "description"
+    }
 }
