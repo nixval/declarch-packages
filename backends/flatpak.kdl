@@ -1,36 +1,36 @@
-// flatpak - Universal app distribution for Linux
 backend "flatpak" {
     meta {
         title "Flatpak"
-        description "Universal packaging format for Linux"
+        description "Universal Linux application sandboxing"
         maintained "nixval"
-        tags "linux" "flatpak" "universal" "desktop"
-        url "-"
-        homepage "https://flatpak.org"
-        license "-"
-        created "2026-02-08"
+        tags "package-manager" "flatpak" "sandbox" "universal"
         platforms "linux"
         requires "flatpak"
+        url "-"
         install-guide "-"
     }
-    
+
     binary "flatpak"
-    sudo "true"
-    
-    list "flatpak list --app --columns=application,version" {
+
+    list "{binary} list --app --columns=application,version" {
         format "tsv"
         name_col 0
         version_col 1
     }
-    
-    install "flatpak install --user flathub {packages}"
-    remove "flatpak uninstall --user {packages}"
-    
-    noconfirm "-y"
-    
-    search "flatpak search {query}" {
+
+    install "{binary} install flathub {packages}"
+    remove "{binary} uninstall {packages}"
+
+    update "{binary} update --appstream"
+    upgrade "{binary} update -y"
+    cache_clean "{binary} uninstall --unused -y"
+
+    search "{binary} search {query}" {
         format "tsv"
-        name_col 0
+        name_col 2
         desc_col 1
     }
+
+    noconfirm "-y"
+    needs_sudo "false"
 }
