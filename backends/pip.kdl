@@ -1,33 +1,28 @@
-// pip - Python package installer
-// Standard package manager for Python
 backend "pip" {
     meta {
         title "pip"
-        description "Standard package manager for Python. Installs and manages Python packages from PyPI."
-        version "-"
-        author "-"
+        description "Standard package manager for Python"
         maintained "nixval"
         tags "python" "pip" "pypi" "package-manager"
         url "-"
         homepage "https://pip.pypa.io"
         license "-"
-        created "2026-02-08"
         platforms "linux" "macos" "windows"
         requires "python"
         install-guide "-"
     }
-    
+
     binary "pip" "pip3"
-    sudo "true"
-    
-    list "pip list --format=json" {
+
+    list "{binary} list --format=json" {
         format "json"
         name_key "name"
         version_key "version"
     }
-    
-    install "pip install {packages}"
-    remove "pip uninstall -y {packages}"
-    
+
+    install "{binary} install {packages}"
+    remove "{binary} uninstall -y {packages}"
+
     noconfirm "-y"
+    needs_sudo "true"
 }

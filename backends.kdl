@@ -12,6 +12,7 @@ import "backends/pacman.kdl"    // Native pacman (official repos only)
 import "backends/aur.kdl"       // Meta backend with auto-fallback (paru→yay→pacman)
 
 // Debian/Ubuntu
+// import "backends/nala.kdl"      // Nala frontend (fallbacks to apt)
 // import "backends/apt.kdl"
 
 // Fedora/RHEL/CentOS
@@ -52,22 +53,11 @@ import "backends/cargo.kdl"
 // NOTES
 // ============================================================================
 // 
-// To add a backend, simply uncomment the import line above or add:
-// import "backends/your-backend.kdl"
+// To add a backend, uncomment/import the desired file above.
 //
-// For Arch Linux users, 'aur' backend is recommended as it provides
-// automatic fallback: paru → yay → pacman
-//
-// For a minimal setup, you might only need:
-// - aur (or paru/pacman for Arch)
-// - flatpak (for GUI apps)
-// - npm (if you do Node.js development)
-// - cargo (if you do Rust development)
-//
-// Meta Fields in Backend Configs:
-// - maintained: Current maintainer (set to "nixval")
-// - url: Source code URL (set to "-" if unknown, will be hidden)
-// - install-guide: Installation instructions (set to "-" if unknown)
-// - version, author, license: Set to "-" if unknown (will be hidden)
-//
-// All fields with "-" value will not be displayed during 'declarch init'
+// Fallback examples:
+// - aur -> pacman
+// - yay -> pacman
+// - paru -> pacman
+// - nala -> apt
+// - yarn/pnpm/bun -> npm

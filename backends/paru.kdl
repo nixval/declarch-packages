@@ -1,40 +1,37 @@
-// paru - Feature packed AUR helper
-// AUR helper with excellent user experience and features
 backend "paru" {
     meta {
         title "Paru"
-        description "Feature packed AUR helper written in Rust. Supports AUR, official repos, and PKGBUILD review."
-        version "-"
-        author "-"
+        description "Feature-packed AUR helper written in Rust"
         maintained "nixval"
         tags "arch" "linux" "aur" "helper" "rust" "paru"
         url "-"
         homepage "https://github.com/Morganamilo/paru"
         license "-"
-        created "2026-02-08"
         platforms "linux"
         requires "pacman"
         install-guide "-"
     }
-    
+
     binary "paru"
-    sudo "true"
-    
-    list "paru -Qq" {
+
+    list "{binary} -Q" {
         format "whitespace"
         name_col 0
+        version_col 1
     }
-    
-    install "paru -S --needed {packages}"
-    remove "paru -Rsn {packages}"
-    update "paru -Syu"
-    upgrade "paru -Sua"
-    
-    noconfirm "--noconfirm"
-    
-    search "paru -Ss {query}" {
+
+    install "{binary} -S --needed {packages}"
+    remove "{binary} -Rsn {packages}"
+    update "{binary} -Sy"
+    upgrade "{binary} -Syu"
+    cache_clean "{binary} -Sc --noconfirm"
+
+    search "{binary} -Ss {query}" {
         format "regex"
         regex "^aur/([^\\s]+)|^community/([^\\s]+)|^extra/([^\\s]+)"
         name_group 1
     }
+
+    noconfirm "--noconfirm"
+    fallback "pacman"
 }

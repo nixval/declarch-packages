@@ -1,27 +1,29 @@
-// soar - Fast, modern, open-source package manager for static binaries
 backend "soar" {
     meta {
         title "Soar Package Manager"
-        description "Fast, modern, open-source package manager for static binaries"
+        description "Fast package manager for static binaries"
         maintained "declarch-community"
         tags "linux" "soar" "static" "binary"
         platforms "linux"
+        requires "soar"
+        url "-"
+        install-guide "-"
     }
-    
+
     binary "soar"
-    
-    list "soar list" {
+
+    list "{binary} list" {
         format "json_lines"
         name_key "pkg_name"
         version_key "version"
     }
-    
-    install "soar install -y {packages}"
-    remove "soar remove --yes {packages}"
-    
+
+    install "{binary} install -y {packages}"
+    remove "{binary} remove --yes {packages}"
+
     noconfirm "-y"
-    
-    search "soar search --json {query}" {
+
+    search "{binary} search --json {query}" {
         format "json_lines"
         name_key "pkg_name"
         version_key "version"

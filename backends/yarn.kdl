@@ -1,38 +1,34 @@
-// yarn - Fast, reliable, and secure dependency management
-// Alternative Node.js package manager by Facebook
 backend "yarn" {
     meta {
         title "Yarn"
-        description "Fast, reliable, and secure dependency management for JavaScript. Alternative to npm with better performance."
-        version "-"
-        author "-"
+        description "Fast dependency management for JavaScript"
         maintained "nixval"
-        tags "nodejs" "javascript" "yarn" "facebook" "package-manager" "fast"
+        tags "nodejs" "javascript" "yarn" "package-manager"
         url "-"
         homepage "https://yarnpkg.com"
         license "-"
-        created "2026-02-08"
         platforms "linux" "macos" "windows"
-        requires "nodejs"
+        requires "nodejs" "npm"
         install-guide "-"
     }
-    
+
     binary "yarn"
-    sudo "false"
-    
-    // yarn global list outputs tree format, using regex to extract package names
-    list "yarn global list" {
+
+    list "{binary} global list" {
         format "regex"
         regex "^[├└]── ([^@]+)@"
         name_group 1
     }
-    
-    install "yarn global add {packages}"
-    remove "yarn global remove {packages}"
-    
-    search "yarn search {query}" {
+
+    install "{binary} global add {packages}"
+    remove "{binary} global remove {packages}"
+
+    search "{binary} search {query}" {
         format "whitespace"
         name_col 0
         desc_col 1
     }
+
+    needs_sudo "false"
+    fallback "npm"
 }

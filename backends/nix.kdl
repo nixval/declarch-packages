@@ -1,34 +1,30 @@
-// nix - Purely functional package manager
-// Declarative package manager with reproducible builds
 backend "nix" {
     meta {
         title "Nix"
-        description "Purely functional package manager with reproducible builds and declarative configuration."
-        version "-"
-        author "-"
+        description "Functional package manager with reproducible builds"
         maintained "nixval"
-        tags "nix" "nixos" "linux" "macos" "functional" "reproducible"
+        tags "nix" "nixos" "linux" "macos" "functional"
         url "-"
         homepage "https://nixos.org"
         license "-"
-        created "2026-02-08"
         platforms "linux" "macos"
-        requires "nix"
+        requires "nix-env"
         install-guide "-"
     }
-    
+
     binary "nix-env"
-    sudo "false"
-    
-    list "nix-env -q --out-path 2>/dev/null | awk '{print $1}'" {
+
+    list "{binary} -q --out-path 2>/dev/null | awk '{print $1}'" {
         format "regex"
-        pattern "^(.+?)-([\\d.]+)$"
+        regex "^(.+?)-([\\d.]+)$"
         name_group 1
         version_group 2
     }
-    
-    install "nix-env -iA nixpkgs.{packages}"
-    remove "nix-env -e {packages}"
-    update "nix-channel --update && nix-env -u"
-    upgrade "nix-env -u"
+
+    install "{binary} -iA nixpkgs.{packages}"
+    remove "{binary} -e {packages}"
+    update "nix-channel --update"
+    upgrade "{binary} -u"
+
+    needs_sudo "false"
 }

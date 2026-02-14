@@ -1,35 +1,34 @@
-// brew - Homebrew package manager
-// The Missing Package Manager for macOS (or Linux)
 backend "brew" {
     meta {
         title "Homebrew"
-        description "The Missing Package Manager for macOS (or Linux). Installs packages from Homebrew repository."
-        version "-"
-        author "-"
+        description "Package manager for macOS and Linux"
         maintained "nixval"
-        tags "macos" "linux" "brew" "homebrew" "apple"
+        tags "macos" "linux" "brew" "homebrew"
         url "-"
         homepage "https://brew.sh"
         license "-"
-        created "2026-02-08"
         platforms "macos" "linux"
-        requires "none"
+        requires "brew"
         install-guide "-"
     }
-    
+
     binary "brew"
-    sudo "false"
-    
-    list "brew list --formulae" {
+
+    list "{binary} list --formulae" {
         format "whitespace"
         name_col 0
     }
-    
-    install "brew install {packages}"
-    remove "brew uninstall {packages}"
-    
-    search "brew search {query}" {
+
+    install "{binary} install {packages}"
+    remove "{binary} uninstall {packages}"
+    update "{binary} update"
+    upgrade "{binary} upgrade"
+    cache_clean "{binary} cleanup -s"
+
+    search "{binary} search {query}" {
         format "whitespace"
         name_col 0
     }
+
+    needs_sudo "false"
 }

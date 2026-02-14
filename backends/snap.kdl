@@ -1,37 +1,35 @@
-// snap - Universal Linux package manager by Canonical
-// Self-contained packages that work across Linux distributions
 backend "snap" {
     meta {
         title "Snap"
-        description "Universal Linux package manager by Canonical. Self-contained packages with automatic updates."
-        version "-"
-        author "-"
+        description "Universal Linux package manager by Canonical"
         maintained "nixval"
-        tags "linux" "snap" "universal" "canonical" "ubuntu" "sandboxed"
+        tags "linux" "snap" "universal" "canonical"
         url "-"
         homepage "https://snapcraft.io"
         license "-"
-        created "2026-02-08"
         platforms "linux"
         requires "snapd"
         install-guide "-"
     }
-    
+
     binary "snap"
-    sudo "true"
-    
-    list "snap list" {
+
+    list "{binary} list" {
         format "tsv"
         name_col 0
         version_col 1
     }
-    
-    install "snap install {packages}"
-    remove "snap remove {packages}"
-    
-    search "snap find {query}" {
+
+    install "{binary} install {packages}"
+    remove "{binary} remove {packages}"
+    update "{binary} refresh"
+    upgrade "{binary} refresh"
+
+    search "{binary} find {query}" {
         format "tsv"
         name_col 0
         desc_col 1
     }
+
+    needs_sudo "true"
 }

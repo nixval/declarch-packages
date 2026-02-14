@@ -1,45 +1,38 @@
-// apt - Advanced Package Tool for Debian/Ubuntu
-// Package management system used by Debian, Ubuntu, and derivatives
 backend "apt" {
     meta {
         title "APT"
-        description "Advanced Package Tool for Debian-based distributions. Package management system used by Debian, Ubuntu, and derivatives."
-        version "-"
-        author "-"
+        description "Advanced Package Tool for Debian-based distributions"
         maintained "nixval"
         tags "debian" "ubuntu" "linux" "apt" "dpkg" "package-manager"
         url "-"
         homepage "https://wiki.debian.org/Apt"
         license "-"
-        created "2026-02-08"
         platforms "linux"
         requires "apt"
         install-guide "-"
     }
-    
+
     binary "apt"
-    sudo "true"
-    
+
     list "dpkg-query -W -f='${Package}\t${Version}\n'" {
         format "tsv"
         name_col 0
         version_col 1
     }
-    
-    install "apt install -y {packages}"
-    remove "apt remove -y {packages}"
-    purge "apt purge -y {packages}"
-    update "apt update && apt upgrade -y"
-    autoremove "apt autoremove -y"
-    
-    noconfirm "-y"
-    
+
+    install "{binary} install {packages}"
+    remove "{binary} remove {packages}"
+    update "{binary} update"
+    upgrade "{binary} upgrade -y"
+    cache_clean "{binary} clean"
+
     search "apt-cache search {query}" {
         format "regex"
-        regex {
-            line "^(.+?) - (.+)$"
-            name_group 1
-            desc_group 2
-        }
+        regex "^(.+?) - (.+)$"
+        name_group 1
+        desc_group 2
     }
+
+    noconfirm "-y"
+    needs_sudo "true"
 }

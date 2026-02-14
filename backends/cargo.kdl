@@ -1,31 +1,28 @@
-// cargo - Rust package manager
-// Build system and package manager for Rust
 backend "cargo" {
     meta {
         title "Cargo"
-        description "Rust's build system and package manager. Handles dependencies, building, testing, and distribution."
-        version "-"
-        author "-"
+        description "Rust build system and package manager"
         maintained "nixval"
-        tags "rust" "cargo" "package-manager" "build-system"
+        tags "rust" "cargo" "package-manager"
         url "-"
         homepage "https://doc.rust-lang.org/cargo/"
         license "-"
-        created "2026-02-08"
         platforms "linux" "macos" "windows"
-        requires "rust"
+        requires "cargo"
         install-guide "-"
     }
-    
+
     binary "cargo"
-    
-    list "cargo install --list" {
+
+    list "{binary} install --list" {
         format "regex"
-        pattern "^(\\S+)\\s+v([\\d.]+):"
+        regex "^(\\S+)\\s+v([\\d.]+):"
         name_group 1
         version_group 2
     }
-    
-    install "cargo install {packages}"
-    remove "cargo uninstall {packages}"
+
+    install "{binary} install {packages}"
+    remove "{binary} uninstall {packages}"
+
+    needs_sudo "false"
 }

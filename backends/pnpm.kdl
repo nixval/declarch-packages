@@ -1,39 +1,35 @@
-// pnpm - Fast, disk space efficient package manager
-// Alternative to npm with significant performance improvements
 backend "pnpm" {
     meta {
         title "pnpm"
-        description "Fast, disk space efficient package manager. Saves gigabytes of disk space compared to npm."
-        version "-"
-        author "-"
+        description "Fast and disk-efficient Node.js package manager"
         maintained "nixval"
-        tags "nodejs" "javascript" "pnpm" "fast" "efficient" "disk-space"
+        tags "nodejs" "javascript" "pnpm" "fast" "efficient"
         url "-"
         homepage "https://pnpm.io"
         license "-"
-        created "2026-02-08"
         platforms "linux" "macos" "windows"
-        requires "nodejs"
+        requires "nodejs" "npm"
         install-guide "-"
     }
-    
+
     binary "pnpm"
-    sudo "false"
-    
-    // pnpm list -g outputs plain text format
-    list "pnpm list -g" {
+
+    list "{binary} list -g" {
         format "regex"
         regex "^(\\S+)@"
         name_group 1
     }
-    
-    install "pnpm add -g {packages}"
-    remove "pnpm remove -g {packages}"
-    
-    search "pnpm search {query} --json" {
+
+    install "{binary} add -g {packages}"
+    remove "{binary} remove -g {packages}"
+
+    search "{binary} search {query} --json" {
         format "npm_json"
         name_key "name"
         version_key "version"
         desc_key "description"
     }
+
+    needs_sudo "false"
+    fallback "npm"
 }

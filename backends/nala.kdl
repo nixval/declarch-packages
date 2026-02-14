@@ -1,0 +1,26 @@
+backend "nala" {
+    meta {
+        title "Nala"
+        description "APT frontend with nicer UX"
+        maintained "nixval"
+        tags "debian" "ubuntu" "linux" "nala" "apt"
+        url "-"
+        homepage "https://gitlab.com/volian/nala"
+        license "-"
+        platforms "linux"
+        requires "nala" "apt"
+        install-guide "-"
+    }
+
+    binary "nala"
+
+    install "{binary} install {packages}"
+    remove "{binary} remove {packages}"
+    update "{binary} update"
+    upgrade "{binary} upgrade -y"
+    cache_clean "{binary} clean"
+
+    noconfirm "-y"
+    needs_sudo "true"
+    fallback "apt"
+}
