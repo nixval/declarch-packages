@@ -60,4 +60,5 @@ import "backends/cargo.kdl"
 // - yay -> pacman
 // - paru -> pacman
 // - nala -> apt
-// - yarn/pnpm/bun -> npm
+// - nala -> apt
+// - paru/yay -> pacman

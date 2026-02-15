@@ -33,5 +33,4 @@ backend "pnpm" {
     }
 
     needs_sudo "false"
-    fallback "npm"
 }

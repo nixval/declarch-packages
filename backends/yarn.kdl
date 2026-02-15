@@ -32,5 +32,4 @@ backend "yarn" {
     }
 
     needs_sudo "false"
-    fallback "npm"
 }
