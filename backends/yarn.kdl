@@ -14,6 +14,8 @@ backend "yarn" {
 
     binary "yarn"
 
+    platforms "linux" "macos" "windows"
+
     list "{binary} global list" {
         format "regex"
         regex "^[├└]── ([^@]+)@"

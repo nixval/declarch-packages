@@ -14,6 +14,8 @@ backend "pnpm" {
 
     binary "pnpm"
 
+    platforms "linux" "macos" "windows"
+
     list "{binary} list -g" {
         format "regex"
         regex "^(\\S+)@"

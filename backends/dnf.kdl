@@ -14,6 +14,8 @@ backend "dnf" {
 
     binary "dnf"
 
+    platforms "linux"
+
     list "{binary} list installed --quiet | tail -n +2" {
         format "tsv"
         name_col 0

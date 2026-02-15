@@ -14,6 +14,8 @@ backend "nix" {
 
     binary "nix-env"
 
+    platforms "linux" "macos"
+
     list "{binary} -q --out-path 2>/dev/null | awk '{print $1}'" {
         format "regex"
         regex "^(.+?)-([\\d.]+)$"

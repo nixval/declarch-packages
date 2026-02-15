@@ -12,6 +12,8 @@ backend "npm" {
 
     binary "npm"
 
+    platforms "linux" "macos"
+
     list "{binary} list -g --json" {
         format "json_object_keys"
         json_path "dependencies"

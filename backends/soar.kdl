@@ -12,6 +12,8 @@ backend "soar" {
 
     binary "soar"
 
+    platforms "linux"
+
     list "{binary} list" {
         format "json_lines"
         name_key "pkg_name"

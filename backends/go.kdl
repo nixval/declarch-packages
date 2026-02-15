@@ -14,6 +14,8 @@ backend "go" {
 
     binary "go"
 
+    platforms "linux" "macos" "windows"
+
     list "ls $(go env GOPATH)/bin 2>/dev/null || ls $HOME/go/bin 2>/dev/null" {
         format "whitespace"
         name_col 0

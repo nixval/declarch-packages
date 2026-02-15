@@ -12,6 +12,8 @@ backend "flatpak" {
 
     binary "flatpak"
 
+    platforms "linux"
+
     list "{binary} list --app --columns=application,version" {
         format "tsv"
         name_col 0

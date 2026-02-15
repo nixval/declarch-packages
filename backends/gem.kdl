@@ -14,6 +14,8 @@ backend "gem" {
 
     binary "gem"
 
+    platforms "linux" "macos" "windows"
+
     list "{binary} list --local" {
         format "regex"
         regex "^(\\S+)\\s*\\(([^)]+)\\)"

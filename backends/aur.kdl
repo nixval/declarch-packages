@@ -12,6 +12,8 @@ backend "aur" {
 
     binary "paru" "yay"
 
+    platforms "linux"
+
     list "{binary} -Q" {
         format "whitespace"
         name_col 0

@@ -14,6 +14,8 @@ backend "nala" {
 
     binary "nala"
 
+    platforms "linux"
+
     install "{binary} install {packages}"
     remove "{binary} remove {packages}"
     update "{binary} update"

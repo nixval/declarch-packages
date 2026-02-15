@@ -14,6 +14,8 @@ backend "brew" {
 
     binary "brew"
 
+    platforms "macos" "linux"
+
     list "{binary} list --formulae" {
         format "whitespace"
         name_col 0

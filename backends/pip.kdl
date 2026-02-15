@@ -14,6 +14,8 @@ backend "pip" {
 
     binary "pip" "pip3"
 
+    platforms "linux" "macos" "windows"
+
     list "{binary} list --format=json" {
         format "json"
         name_key "name"
